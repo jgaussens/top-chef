@@ -1,0 +1,13 @@
+{
+  "name": "node-web-scrape",
+  "version": "0.0.1",
+  "description": "Michelin + lafourchette scraping",
+  "main": "workshop.js",
+  "author": "Jules Gaussens",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "latest",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
+}
