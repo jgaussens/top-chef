@@ -12,3 +12,23 @@ But this zipcode, on the michelin website is always written on the page of the r
 Another alternative would be: <a href> for each restaurant seems to be $nameOfRestaurant-nameofcity$ 
 
 */
+
+/* 
+	How a deal is represented on lafourchette:
+	<div class="saleType saleType--specialOffer" data-category-type>
+		<h3 class="saleType-title">-30% sur la carte</h3>
+	
+	document.querySelectorAll('.saleType--specialOffer');
+*/
+
+
+page = 'https://www.lafourchette.com/restaurant/in-vino-veritas/5870';
+request(page, function (error, response, html) {
+  if (!error && response.statusCode == 200) {
+    var $ = cheerio.load(html);
+	    specialOffer = $('.saleType--specialOffer');
+		console.log(specialOffer);
+	
+  }
+    
+});
