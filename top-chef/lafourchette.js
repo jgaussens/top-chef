@@ -19,16 +19,28 @@ Another alternative would be: <a href> for each restaurant seems to be $nameOfRe
 		<h3 class="saleType-title">-30% sur la carte</h3>
 	
 	document.querySelectorAll('.saleType--specialOffer');
+	
+	//si length = 0 = pas d'offre 
 */
 
 
-page = 'https://www.lafourchette.com/restaurant/in-vino-veritas/5870';
+//Test request pour savoir si offer sur un restaurant precis
+//page = 'https://www.lafourchette.com/restaurant/in-vino-veritas/5870';
+page = 'https://www.lafourchette.com/restaurant/le-jules-verne/282745';
 request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
 	    specialOffer = $('.saleType--specialOffer');
-		console.log(specialOffer);
+	    length = specialOffer.length
+	    if (length == 0){
+		    console.log("No offer for this restaurant");
+	    }
+	    else{
+		    console.log(specialOffer);
+	    }
 	
   }
     
 });
+
+//Test pour la recherche sur lafourchette
