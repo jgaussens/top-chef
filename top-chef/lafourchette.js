@@ -75,7 +75,8 @@ request(page, function (error, response, html) {
 
 //test v0
 
-page = 'https://www.lafourchette.com/search-refine/papilla';
+
+var page = 'https://www.lafourchette.com/search-refine/papilla';
 request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
@@ -89,13 +90,19 @@ request(page, function (error, response, html) {
     else{
 		//gros bloc else a b c du dessus
 		allResults = $('.resultContainer .list-unstyled .resultItem');
-		firstResultOffer = allResults[0]+$('.resultItem-saleType--specialOffer');
+
+		firstResultOffer = allResults[0]+$('.resultItem-saleType--specialOffer'); //c'est un text et pas un objet. voir comment faire pour l'avoir en objet
+		
+		//************* pas bon car récupère tout, allResults[0] ne fonctionne pas // ********************
+		
 		length = firstResultOffer.length;
 		
 		if (length==0){
-			console.log("No Offer for this restaurant");
+			console.log("Aucune offre pour ce restaurant");
+
 		}
 		else{
+			console.log("Il y a une promotion pour ce restaurant:");
 			promo = firstResultOffer+$('outerHTML');
 			console.log(promo);
 		}
@@ -109,12 +116,61 @@ request(page, function (error, response, html) {
 
 
 
+/* v0.5 avec l'histoire des menus speciaux et pas des promotions */
+/*
+
+//page = 'https://www.lafourchette.com/search-refine/papilla';
+page = 'https://www.lafourchette.com/search-refine/Le%20Corot';
+request(page, function (error, response, html) {
+  if (!error && response.statusCode == 200) {
+    var $ = cheerio.load(html);
+    
+    specialOffer = $('.list-unstyled .resultItem-saleType--specialOffer'); //tableau contenant toutes les promo sur 																									cette page 
+    
+    length = specialOffer.length
+    if (length == 0){
+	    console.log("No offer for this restaurant");
+    }
+    else{
+		//gros bloc else a b c du dessus
+		allResults = $('.resultContainer .list-unstyled .resultItem');
+
+		firstResultOffer = allResults[0]+$('.resultItem-saleType--specialOffer'); //c'est un text et pas un objet. voir comment faire pour l'avoir en objet
+		console.log(allResults.first());
+		//resultItem-saleType--event = menu special (exemple: saint valentin
+		
+		//console.log(firstResultOffer);
+		length = firstResultOffer.length;
+		
+		if (length==0){
+			firstResultOffer = allResults[0]+$('.resultItem-saleType--event');
+			length = firstResultOffer.length;
+			if (length==0){
+				console.log("Aucune offre pour ce restaurant");
+			}
+			else{
+				console.log("Un menu spécial est proposé pour ce restaurant");
+				console.log(firstResultOffer);
+			}
+		}
+		else{
+			console.log("Il y a une promotion pour ce restaurant:");
+			promo = firstResultOffer+$('outerHTML');
+			console.log(promo);
+		}
+
+    }
+	
+  }
+    
+});
+
 /*
 
 //v1 Later
 
 
-page = 'https://www.lafourchette.com/search-refine/papilla';
+page = 'https://www.lafourchette.com/search-refine/L'Arbre';
 request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
