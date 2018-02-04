@@ -4,6 +4,7 @@ var cheerio = require('cheerio');
 /*
 Some observations:
 
+doc cheerio: https://cheerio.js.org/
 
 It seems that oftenly, several restaurants appears in the search requests on lafourchette when we search a michelin-restaurant's name. 
 So i guess we should get on michelin also the address of the restaurants (at least the zipcode).
@@ -20,7 +21,7 @@ Another alternative would be: <a href> for each restaurant seems to be $nameOfRe
 	
 	document.querySelectorAll('.saleType--specialOffer');
 	
-	//si length = 0 = pas d'offre 
+	//si lenghtCalc = 0 = pas d'offre 
 */
 
 
@@ -33,8 +34,8 @@ request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
     specialOffer = $('.saleType--specialOffer');
-    length = specialOffer.length
-    if (length == 0){
+    lenghtCalc = specialOffer.length
+    if (lenghtCalc == 0){
 	    console.log("No offer for this restaurant");
     }
     else{
@@ -76,34 +77,57 @@ request(page, function (error, response, html) {
 //test v0
 
 
-var page = 'https://www.lafourchette.com/search-refine/papilla';
+//var page = 'https://www.lafourchette.com/search-refine/papilla'; //test 1 offre only
+var page = 'https://www.lafourchette.com/search-refine/matsuri'; //test plusieurs offres
+//var page = 'https://www.lafourchette.com/search-refine/Le%20Corot';
 request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
     
     specialOffer = $('.list-unstyled .resultItem-saleType--specialOffer'); //tableau contenant toutes les promo sur 																									cette page 
     
-    length = specialOffer.length
-    if (length == 0){
+    lenghtCalc = specialOffer.length
+    
+    if (lenghtCalc == 0){
 	    console.log("No offer for this restaurant");
     }
     else{
 		//gros bloc else a b c du dessus
-		allResults = $('.resultContainer .list-unstyled .resultItem');
+		var allResults = $('.resultContainer .list-unstyled .resultItem');//good
+		var firstResultOffer = (allResults.first().find('.resultItem-saleType--specialOffer'));
 
-		firstResultOffer = allResults[0]+$('.resultItem-saleType--specialOffer'); //c'est un text et pas un objet. voir comment faire pour l'avoir en objet
+
 		
-		//************* pas bon car récupère tout, allResults[0] ne fonctionne pas // ********************
+
 		
-		length = firstResultOffer.length;
+		lenghtCalc = firstResultOffer.length //fonctionne
+		//console.log(lenghtCalc);
+				
+		if (lenghtCalc==0){
 		
-		if (length==0){
-			console.log("Aucune offre pour ce restaurant");
+			firstResultOffer = $('.resultItem-saleType--event').first();
+			
+			//console.log(firstResultOffer);
+			
+			lenghtCalc = firstResultOffer.length;
+			
+			if (lenghtCalc==0){ 
+				console.log("Zero offer for this restaurant");
+			}
+			else{
+			
+				var specialEvent = $('.resultItem-saleType--event').children().first().text();
+				
+				console.log("No discount for this restaurant but there is a special event:");
+				
+				console.log(specialEvent);
+				//console.log(firstResultOffer+$('innerText'));
+			}
 
 		}
 		else{
 			console.log("Il y a une promotion pour ce restaurant:");
-			promo = firstResultOffer+$('outerHTML');
+			var promo = $('.resultItem-saleType--specialOffer').children().first().text();
 			console.log(promo);
 		}
 
@@ -112,6 +136,10 @@ request(page, function (error, response, html) {
   }
     
 });
+
+
+
+
 
 
 
@@ -127,8 +155,8 @@ request(page, function (error, response, html) {
     
     specialOffer = $('.list-unstyled .resultItem-saleType--specialOffer'); //tableau contenant toutes les promo sur 																									cette page 
     
-    length = specialOffer.length
-    if (length == 0){
+    lenghtCalc = specialOffer.length
+    if (lenghtCalc == 0){
 	    console.log("No offer for this restaurant");
     }
     else{
@@ -140,12 +168,12 @@ request(page, function (error, response, html) {
 		//resultItem-saleType--event = menu special (exemple: saint valentin
 		
 		//console.log(firstResultOffer);
-		length = firstResultOffer.length;
+		lenghtCalc = firstResultOffer.length;
 		
-		if (length==0){
+		if (lenghtCalc==0){
 			firstResultOffer = allResults[0]+$('.resultItem-saleType--event');
-			length = firstResultOffer.length;
-			if (length==0){
+			lenghtCalc = firstResultOffer.length;
+			if (lenghtCalc==0){
 				console.log("Aucune offre pour ce restaurant");
 			}
 			else{
@@ -177,8 +205,8 @@ request(page, function (error, response, html) {
     
     specialOffer = $('.list-unstyled .resultItem-saleType--specialOffer'); //tableau contenant toutes les promo sur 																									cette page 
     
-    length = specialOffer.length
-    if (length == 0){
+    lenghtCalc = specialOffer.length
+    if (lenghtCalc == 0){
 	    console.log("No offer for this restaurant");
     }
     else{
@@ -193,7 +221,16 @@ request(page, function (error, response, html) {
   }
     
 });
+/*
 
-
-
+		//console.log(firstResult)
+		
+		//firstResultOffer = $('.resultContainer .list-unstyled .resultItem .resultItem-saleType--specialOffer').first(); //chope 1ère offre de la page => pas bon (pour l'instant tests sur 1ere occurence + nature de la promotion (pourcentage, event ou rien);
+		
+		firstResultOffer = allResults.eq(0).contents('.resultItem-saleType--specialOffer');
+		console.log("dzada");
+		//console.log(firstResultOffer);
+		//console.log(firstResultOffer);
+		//console.log(listOffer);
+		
 */
