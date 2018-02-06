@@ -78,8 +78,8 @@ request(page, function (error, response, html) {
 
 
 //var page = 'https://www.lafourchette.com/search-refine/papilla'; //test 1 offre only
-var page = 'https://www.lafourchette.com/search-refine/matsuri'; //test plusieurs offres
-//var page = 'https://www.lafourchette.com/search-refine/Le%20Corot';
+//var page = 'https://www.lafourchette.com/search-refine/matsuri'; //test plusieurs offres
+var page = 'https://www.lafourchette.com/search-refine/Le%20Corot';
 request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
@@ -97,7 +97,9 @@ request(page, function (error, response, html) {
 		var firstResultOffer = (allResults.first().find('.resultItem-saleType--specialOffer'));
 
 
+		var href = $('.resultItem-avatar id href').eq(0).children().eq(0);
 		
+		//hrefref[0].children[0].href => fonctionne dans la console
 
 		
 		lenghtCalc = firstResultOffer.length //fonctionne
@@ -118,10 +120,42 @@ request(page, function (error, response, html) {
 			
 				var specialEvent = $('.resultItem-saleType--event').children().first().text();
 				
+				
 				console.log("No discount for this restaurant but there is a special event:");
 				
 				console.log(specialEvent);
-				//console.log(firstResultOffer+$('innerText'));
+				
+				
+				
+				var addresses = $('.resultItem-address');
+				
+				
+				console.log(addresses.first().contents().text()); //adresse du premier resultat (fonctionne);
+				
+			
+				//console.log(links);
+				
+				//resultItem-address
+				
+				/*
+				
+					var addresses = [];
+				$('.resultItem-address').each( (index, value) => {
+				   var addr = $(value).attr('href');
+				   addresses.push({"link": addr});
+				});
+				   
+				   
+				console.log(links);
+				
+				
+				
+				$('.resultItem-avatar id href').each(function(index, elem) {
+					console.log($(this).attr('href'));
+				});
+								//console.log(firstResultOffer+$('innerText'));
+								
+								*/
 			}
 
 		}

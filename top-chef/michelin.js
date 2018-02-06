@@ -25,6 +25,11 @@ for (i = 1; i<35; i++){
 }
 
 
+
+
+
+/*
+
 	page = 'https://www.lafourchette.com/restaurant/in-vino-veritas/5870'.concat('/page-',i);
 	request(page, function (error, response, html) {
 	  if (!error && response.statusCode == 200) {
@@ -42,3 +47,5 @@ for (i = 1; i<35; i++){
 	  }
 	    
 	});
+	
+*/
