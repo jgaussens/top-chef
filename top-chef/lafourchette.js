@@ -130,7 +130,13 @@ request(page, function (error, response, html) {
 				var addresses = $('.resultItem-address');
 				
 				
-				console.log(addresses.first().contents().text()); //adresse du premier resultat (fonctionne);
+				var firstAddressString = addresses.first().contents().text(); //adresse du premier resultat (fonctionne);
+				
+				console.log(firstAddressString);
+				
+				var toSearch = firstAddressString.search("Ville-d'Avray"); // if returns -1 => no string
+				
+				console.log(toSearch);
 				
 			
 				//console.log(links);
