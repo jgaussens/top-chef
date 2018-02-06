@@ -138,99 +138,11 @@ request(page, function (error, response, html) {
 });
 
 
-
-
-
-
-
-
-/* v0.5 avec l'histoire des menus speciaux et pas des promotions */
 /*
 
-//page = 'https://www.lafourchette.com/search-refine/papilla';
-page = 'https://www.lafourchette.com/search-refine/Le%20Corot';
-request(page, function (error, response, html) {
-  if (!error && response.statusCode == 200) {
-    var $ = cheerio.load(html);
-    
-    specialOffer = $('.list-unstyled .resultItem-saleType--specialOffer'); //tableau contenant toutes les promo sur 																									cette page 
-    
-    lenghtCalc = specialOffer.length
-    if (lenghtCalc == 0){
-	    console.log("No offer for this restaurant");
-    }
-    else{
-		//gros bloc else a b c du dessus
-		allResults = $('.resultContainer .list-unstyled .resultItem');
 
-		firstResultOffer = allResults[0]+$('.resultItem-saleType--specialOffer'); //c'est un text et pas un objet. voir comment faire pour l'avoir en objet
-		console.log(allResults.first());
-		//resultItem-saleType--event = menu special (exemple: saint valentin
-		
-		//console.log(firstResultOffer);
-		lenghtCalc = firstResultOffer.length;
-		
-		if (lenghtCalc==0){
-			firstResultOffer = allResults[0]+$('.resultItem-saleType--event');
-			lenghtCalc = firstResultOffer.length;
-			if (lenghtCalc==0){
-				console.log("Aucune offre pour ce restaurant");
-			}
-			else{
-				console.log("Un menu spécial est proposé pour ce restaurant");
-				console.log(firstResultOffer);
-			}
-		}
-		else{
-			console.log("Il y a une promotion pour ce restaurant:");
-			promo = firstResultOffer+$('outerHTML');
-			console.log(promo);
-		}
+//next: pour la recherche
 
-    }
-	
-  }
-    
-});
+Requêter toutes les pages de la requête (foreach in allresults.length : get Id href + request lafourchette/idhref {get ville, comparer avec la notre (pour l'instant en dur next avec le fichier récupéré michelin)
 
-/*
-
-//v1 Later
-
-
-page = 'https://www.lafourchette.com/search-refine/L'Arbre';
-request(page, function (error, response, html) {
-  if (!error && response.statusCode == 200) {
-    var $ = cheerio.load(html);
-    
-    specialOffer = $('.list-unstyled .resultItem-saleType--specialOffer'); //tableau contenant toutes les promo sur 																									cette page 
-    
-    lenghtCalc = specialOffer.length
-    if (lenghtCalc == 0){
-	    console.log("No offer for this restaurant");
-    }
-    else{
-		//gros bloc else a b c du dessus
-		addr = document.querySelectorAll('.list-unstyled .resultItem-address');
-		if addr[0]
-		
-
-
-    }
-	
-  }
-    
-});
-/*
-
-		//console.log(firstResult)
-		
-		//firstResultOffer = $('.resultContainer .list-unstyled .resultItem .resultItem-saleType--specialOffer').first(); //chope 1ère offre de la page => pas bon (pour l'instant tests sur 1ere occurence + nature de la promotion (pourcentage, event ou rien);
-		
-		firstResultOffer = allResults.eq(0).contents('.resultItem-saleType--specialOffer');
-		console.log("dzada");
-		//console.log(firstResultOffer);
-		//console.log(firstResultOffer);
-		//console.log(listOffer);
-		
 */
