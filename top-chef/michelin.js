@@ -25,7 +25,7 @@ for (i = 1; i<35; i++){
 }
 
 
-
+//modifier pour choper une substr de fin du nom du resto pour choper seulement la fin du href (pour l'adresse)
 
 
 /*
