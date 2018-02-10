@@ -49,37 +49,12 @@ request(page, function (error, response, html) {
 */
 
 
-/* Idée:
-
-1. rechercher le restaurant avec le nom du michelin
-2. Analyser la <li> des résultats:
-
-	Si aucune promo dans toute les li => pas de promo !
-	
-	else:
-
-		a. regarder l'adresse en question (champ texte, analyser mot par mot pour trouver le nom de la ville"
-		b. comparer avec le href trouvé sur michelin (type nomDuRestaurant-nomVille) (sauf dans le cas de villes avec arondissements 				   (nomdurestaurant-ville-arrondissement))
-		c. regarder .resultItem-saleType pour la li en question.
-			Si existe => prendre le champ promo
-			else => Pas de promo !
-			
-		later:
-		sélectionner les horaires des promotions en requêtant la page 'https://www.lafourchette.com/restaurant/' + id-href
-		
-		
-		peut être faire v0 en prenant toujours le premier resultat quitte à avoir tort dans certains cas 
-
-*/
-
-//Test pour la recherche sur lafourchette avec plusieurs résultats: avec et sans promotions
-
-//test v0
-
-
 //var page = 'https://www.lafourchette.com/search-refine/papilla'; //test 1 offre only
 //var page = 'https://www.lafourchette.com/search-refine/matsuri'; //test plusieurs offres
-var page = 'https://www.lafourchette.com/search-refine/Le%20Corot';
+
+var restaurantName = 'le corot'
+var zipCode = '92410';
+var page = 'https://www.lafourchette.com/search-refine/'.concat(restaurantName);
 request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
     var $ = cheerio.load(html);
@@ -117,58 +92,54 @@ request(page, function (error, response, html) {
 				console.log("Zero offer for this restaurant");
 			}
 			else{
-			
-				var specialEvent = $('.resultItem-saleType--event').children().first().text();
-				
-				
-				console.log("No discount for this restaurant but there is a special event:");
-				
-				console.log(specialEvent);
-				
-				
+
 				
 				var addresses = $('.resultItem-address');
 				
 				
 				var firstAddressString = addresses.first().contents().text(); //adresse du premier resultat (fonctionne);
 				
-				console.log(firstAddressString);
+				//console.log(firstAddressString);
 				
-				var toSearch = firstAddressString.search("Ville-d'Avray"); // if returns -1 => no string
+				var toSearch = firstAddressString.search(zipCode); // if returns -1 => no string
 				
-				console.log(toSearch);
-				
-			
-				//console.log(links);
-				
-				//resultItem-address
-				
-				/*
-				
-					var addresses = [];
-				$('.resultItem-address').each( (index, value) => {
-				   var addr = $(value).attr('href');
-				   addresses.push({"link": addr});
-				});
-				   
-				   
-				console.log(links);
+
+				if (toSearch == -1){
+					console.log("Zipcode not found");
+				}
+				else{
+					
+					var specialEvent = $('.resultItem-saleType--event').children().first().text();
 				
 				
-				
-				$('.resultItem-avatar id href').each(function(index, elem) {
-					console.log($(this).attr('href'));
-				});
-								//console.log(firstResultOffer+$('innerText'));
-								
-								*/
+					console.log("No discount for this restaurant but there is a special event:");
+					
+					console.log(specialEvent);
+						
+				}
+
 			}
 
 		}
 		else{
-			console.log("Il y a une promotion pour ce restaurant:");
-			var promo = $('.resultItem-saleType--specialOffer').children().first().text();
-			console.log(promo);
+				var addresses = $('.resultItem-address');
+				
+				
+				var firstAddressString = addresses.first().contents().text(); //adresse du premier resultat (fonctionne);
+				
+				//console.log(firstAddressString);
+				
+				var toSearch = firstAddressString.search(zipCode); // if returns -1 => no string
+				
+	
+				if (toSearch == -1){
+					console.log("Zipcode not found");
+				}
+				else{
+					console.log("Il y a une promotion pour ce restaurant:");
+					var promo = $('.resultItem-saleType--specialOffer').children().first().text();
+					console.log(promo);
+				}
 		}
 
     }
