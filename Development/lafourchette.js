@@ -62,32 +62,23 @@ request(page, function (error, response, html) {
 					else{								
 					
 								console.log("Il y a une promotion pour ce restaurant:");
-								var promo = $('.resultItem-saleType--specialOffer').eq(i).first().text();
-
-							
+								var promo = $('.resultItem-saleType--specialOffer').eq(i).first().text();			
 					}
 
 					break;
 
 					
 				}
-					
-					
-
-				
+							
 				
 		}
 			
 			
 	}
-		
-
 
     }
 	
 	
 	console.log(promo);
-  
-    
+	
 });
-
