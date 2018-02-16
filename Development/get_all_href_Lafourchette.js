@@ -3,9 +3,9 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 
-function getHref(page, restaurantName, zipCode){
+function getHref(search_page, zipCode){
 	
-	request(page, function (error, response, html) {
+	request(search_page, function (error, response, html) {
 			if (!error && response.statusCode == 200) {
 				
 				var $ = cheerio.load(html);
@@ -29,13 +29,11 @@ function getHref(page, restaurantName, zipCode){
 						}
 						else{
 						
-							//console.log(restaurantName);
-							//console.log(zipCode);
 							var href = $('.resultItem-name a').attr('href');
 		
 							//console.log(href);
 							fs.appendFile('href_Lafourchette.txt', href + '\n');
-						
+							//console.log(href);
 						
 						}
 						
@@ -62,7 +60,7 @@ fs.readFile('restaurants.json', 'utf8', function (err,data) {
 		
 		var page = 'https://www.lafourchette.com/search-refine/'.concat(restaurantName);
 		
-		getHref(page, restaurantName, zipCode);
+		getHref(page, zipCode);
 		
 		
 	}
