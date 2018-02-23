@@ -19,13 +19,15 @@ function get_write_deal(href){
 			    console.log("");
 			}
 			else{
-			
+				
 			    for (i = 0; i < specialOffer.length; i++){
 			    
 			    	name = $('.restaurantSummary-name').text();
 			    	promo = specialOffer.eq(i).text();
-			    
-			    	str = '\n{"nom" : "'+name+'", "promo" : "'+promo+'", "href" : "'+href+'"},';
+			    	var addr = $('.restaurantSummary-address').first().text();
+
+					
+			    	str = '\n{"nom" : "'+name+'", "promo" : "'+promo+'", "href" : "'+href+'"addr" : "'+addr+'"},';
 					//console.log(href);
 					fs.appendFile('all_current_promos.json', str);
 			    

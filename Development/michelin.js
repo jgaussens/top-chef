@@ -23,9 +23,15 @@ for (i = 1; i<35; i++){
 						    	
 						    	var title = sel('.poi_intro-display-title').text();
 						    	var addr_Zip = sel('.addressfield-container-inline .postal-code').first().text();
+						    	
+						    	var stars = sel('.michelin-poi-distinctions-list .content-wrapper').text().charAt(0);
+
+								var str = '{' + '"nom" : ' + '"' + title.substr(7, title.length - 5) + '",' + ' "zip" : "' + addr_Zip + '", ' + '"Stars" : ' + '"' + stars + '"},\n';
+
+                        fs.appendFile('list_restaurants_V2.json', str)
 							    
 							    //console.log("'"+title + "'" + " : " + "'" +  addr_Zip + "',");
-							    console.log("{" + "'nom' : " + "'"+title+ "',"+ " 'zip' : '" +addr_Zip+ "'" + "},");
+							    //console.log("{" + "'nom' : " + "'"+title+ "',"+ " 'zip' : '" +addr_Zip+ "'" + "},");
 							
 						  }
 						});
