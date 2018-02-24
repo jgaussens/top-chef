@@ -10,6 +10,7 @@ var zipCode = '94300';
 var page = 'https://www.lafourchette.com/search-refine/'.concat(restaurantName);
 request(page, function (error, response, html) {
   if (!error && response.statusCode == 200) {
+  console.log("dsq");
     var $ = cheerio.load(html);
     
     specialOffer = $('.list-unstyled .resultItem-saleType--specialOffer'); //tableau contenant toutes les promo sur 																									cette page 
