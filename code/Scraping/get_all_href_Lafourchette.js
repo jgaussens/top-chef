@@ -22,32 +22,24 @@ function getHref(search_page, zipCode){
 					//console.log(zipCode);
 				
 					var toSearch = currAddr.search(zipCode); // if returns -1 => no string
-						
-		
+	
+
 						if (toSearch == -1){
 							continue;
 						}
 						else{
 						
 							var href = $('.resultItem-name a').attr('href');
-		
-							//console.log(href);
 							fs.appendFile('href_Lafourchette.txt', href + '\n');
-							//console.log(href);
 						
 						}
 						
 				}
-	
-				
-				
-	
+
 			
 			}
 			
 	});
-    
-
 }
 
 

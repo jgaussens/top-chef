@@ -1,4 +1,4 @@
-/* This version gets all the zipcodes and the names of the restaurant, but does more requests (one per restaurant)*/
+/*Request all michelin starred restaurants and get their name, zipcode and number of Stars*/
 
 var request = require('request');
 var cheerio = require('cheerio');
@@ -7,6 +7,7 @@ var cnt=0;
 
 var fs = require('fs');
 var maMap = new Map();
+
 for (i = 1; i<35; i++){
 	page = 'https://restaurant.michelin.fr/restaurants/france/restaurants-1-etoile-michelin/restaurants-2-etoiles-michelin/restaurants-3-etoiles-michelin'.concat('/page-',i);
 	request(page, function (error, response, html) {
@@ -30,20 +31,11 @@ for (i = 1; i<35; i++){
 
                         fs.appendFile('list_restaurants_V2.json', str)
 							    
-							    //console.log("'"+title + "'" + " : " + "'" +  addr_Zip + "',");
-							    //console.log("{" + "'nom' : " + "'"+title+ "',"+ " 'zip' : '" +addr_Zip+ "'" + "},");
-							
 						  }
-						});
-
-			    	
+						});	
 		    	cnt += 1;
-			}
-		
-	  }
-	    
+			}		
+	  }	    
 	});
 }
 
-
-//doublons: prieuré, l essentiel, relais de la poste, la promenade, au 14 février, les fresques, chateau cordeillan, la marine, apicius, l amphitryon

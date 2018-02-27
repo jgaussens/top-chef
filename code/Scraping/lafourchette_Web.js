@@ -1,7 +1,6 @@
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-//remark: 2 italian restaurants were added to the href because of the zip code. removed them by hand
 
 var str = '[';
 
@@ -13,7 +12,7 @@ function get_write_deal(href){
 const config = {
 	'uri': href,
 	'headers':{
-		'cookie': 'datadome = AHrlqAAAAAMAxcgu_HVh7GAALtotww=='
+		'cookie': 'AHrlqAAAAAMA7Q-kVP-96lkAw4TaJA=='
 	}
 	
 }
@@ -38,9 +37,9 @@ const config = {
 			    	var addr = $('.restaurantSummary-address').first().text();
 
 					
-			    	str = '\n{"nom" : "'+name+'", "promo" : "'+promo+'", "href" : "'+href+'", "addr" : "'+addr+'"},';
+			    	str = '\n{"nom" : "'+name+'", "promo" : "'+promo.replace('"', '')+'", "href" : "'+href+'", "addr" : "'+addr+'"},';
 					//console.log(href);
-					fs.appendFile('got_promos/all_current_promos.json', str);
+					fs.appendFile('all_current_promos.json', str);
 			    
 			    }
 			}
