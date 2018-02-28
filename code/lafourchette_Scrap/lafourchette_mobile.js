@@ -40,7 +40,7 @@ const config = {
 					
 			    	str = '\n{"nom" : "'+name+'", "promo" : "'+promo+'", "href" : "'+href+'", "addr" : "'+addr+'"},';
 					//console.log(href);
-					fs.appendFile('got_promos/all_current_promos.json', str);
+					fs.appendFile('../jsonFiles/deals_mobile.json', str);
 			    
 			    }
 			}
@@ -54,7 +54,7 @@ const config = {
 }
 
 
-//read the href in our text file to 
+//read the href in our text file to get promotions from mobile website
 
 var lineReader = require('readline').createInterface({
   input: require('fs').createReadStream('all_href_Lafourchette.txt')
@@ -68,26 +68,3 @@ lineReader.on('line', function (line) {
   
 });
 
-
-
-
-
-
-//fs.appendFile('all_current_promos.json', '\n ]');
-
-/*
-fs.readFile('restaurants.json', 'utf8', function (err,data) {
-  data = JSON.parse(data);
-  	for(var i = 0; i < data.length; i++) {
-	    
-	    var restaurantName = data[i].nom
-		var zipCode = data[i].zip
-		
-		var page = 'https://www.lafourchette.com/search-refine/'.concat(restaurantName);
-		
-		getHref(page, zipCode);
-		
-		
-	}
-	fs.appendFile('href_Lafourchette.txt', '\n' ]);
-});*/

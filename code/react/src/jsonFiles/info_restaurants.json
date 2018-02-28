@@ -1,4 +1,4 @@
-{ "id": 9611, "name": "Le Radio", "address": {"address_locality":"Chamalières","postal_code":"63400","street_address":"43, av Pierre et Marie Curie"}},
+[{ "id": 9611, "name": "Le Radio", "address": {"address_locality":"Chamalières","postal_code":"63400","street_address":"43, av Pierre et Marie Curie"}},
 { "id": 275, "name": "Restaurant le Meurice Alain Ducasse", "address": {"address_locality":"Paris","postal_code":"75001","street_address":"228, rue de Rivoli"}},
 { "id": 26352, "name": "Le Moulin de l'Abbaye", "address": {"address_locality":"Brantôme","postal_code":"24310","street_address":"1 route de Bourdeilles"}},
 { "id": 2819, "name": "Les Hautes Roches", "address": {"address_locality":"Rochecorbon","postal_code":"37210","street_address":"86, quai de la Loire"}},
@@ -215,4 +215,4 @@
 { "id": 1310, "name": "Le Phebus - Xavier Mathieu", "address": {"address_locality":"Joucas","postal_code":"84220","street_address":"Route de Murs"}},
 { "id": 204609, "name": "Le Castellaras", "address": {"address_locality":"Fayence","postal_code":"83440","street_address":"461 Chemin de Peymeyan"}},
 { "id": 28453, "name": "Le 1217", "address": {"address_locality":"Bagnols","postal_code":"69620","street_address":"Le Bourg"}},
-{ "id": 344985, "name": "Les Tontons Burgers (Saint-Georges)", "address": {"address_locality":"Lyon","postal_code":"69005","street_address":"86 Rue Saint-Georges"}},
+{ "id": 344985, "name": "Les Tontons Burgers (Saint-Georges)", "address": {"address_locality":"Lyon","postal_code":"69005","street_address":"86 Rue Saint-Georges"}}]

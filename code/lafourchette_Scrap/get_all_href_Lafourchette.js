@@ -6,6 +6,7 @@ var cheerio = require('cheerio');
 function getHref(search_page, zipCode){
 	
 	request(search_page, function (error, response, html) {
+	console.log(response.statusCode);
 			if (!error && response.statusCode == 200) {
 				
 				var $ = cheerio.load(html);
@@ -43,7 +44,7 @@ function getHref(search_page, zipCode){
 }
 
 
-fs.readFile('restaurants.json', 'utf8', function (err,data) {
+fs.readFile('../jsonFiles/michelin_restaurants(pretrated).json', 'utf8', function (err,data) {
   data = JSON.parse(data);
   	for(var i = 0; i < data.length; i++) {
 	    
