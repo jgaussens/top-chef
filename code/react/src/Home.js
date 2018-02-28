@@ -17,9 +17,9 @@ function merge_all_restaurant_infos(){
 	    for (var j = 0; j < info.length; j++){
 		    if (info[j].id == promos[i].id_restaurant){
 		    	var restaurant_name = info[j].name;
-		    	var addr = info[j].address.address_locality;
+		    	var addr_locality = info[j].address.address_locality;
+		    	var addr_zip = info[j].address.postal_code;
 		    	console.log(restaurant_name);
-		    	console.log(addr);
 		    }
 	    }
 	    
@@ -38,7 +38,7 @@ function merge_all_restaurant_infos(){
 	    for (var l = 0; l < href.length; l++){
 		    if (href[l].id_restaurant == promos[i].id_restaurant){
 			    dom += 'https://www.lafourchette.com/restaurant/' + href[l].href + '/' + promos[i].id_restaurant + '">'
-			    + restaurant_name + ' - ' + addr + ' - ' + stars + '</a>';
+			    + restaurant_name + ' - ' + addr_locality + ' - ' + addr_zip + ' - ' + stars + '</a>';
 		    }
 	    }
 	    
@@ -52,11 +52,11 @@ function merge_all_restaurant_infos(){
 
 merge_all_restaurant_infos();
 
-//console.log(dom);
 
 class Home extends Component {
   render() {
-    return ( dom
+    return ( <div dangerouslySetInnerHTML={{ __html: dom }} />
+
     );
   }
 }
