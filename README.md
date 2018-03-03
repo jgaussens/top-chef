@@ -22,11 +22,14 @@
 
 	npm install (from the first folder, which contains all the project)
 
+	
+
 ————————————————————————————————————————————
 
 
 * Get all the stared restaurants from michelin:
 
+	
 	cd code/michelin/
 	node michelin.js
 	open michelin_restaurants.json (in the same folder) to see the results 
@@ -37,27 +40,27 @@
 
 * Get all the deals (API Mode):
 
-	cd code/lafourchette_API/
-	node lafourchette.js
-	open the deals_api.json file and the info_restaurants.json file (infos about restaurants) in the same folder
+		cd code/lafourchette_API/
+		node lafourchette.js
+		open the deals_api.json file and the info_restaurants.json file (infos about restaurants) in the same folder
 
 
 ————————————————————————————————————————————
 
 * Get all the deals (Scraping web mode): [Warning: You should be blocked using this method]
 
-	cd code/lafourchette_Scrap/
-	node lafourchette_Web.js
-	if you are not blocked (403), open the promos_scrap.json file (in the same folder)
+		cd code/lafourchette_Scrap/
+		node lafourchette_Web.js
+		if you are not blocked (403), open the promos_scrap.json file (in the same folder)
 
 
 ————————————————————————————————————————————
 
 * Get all the deals (Scraping mobile mode): [Warning: You should be blocked using this method]
 
-	cd code/lafourchette_Scrap/
-	node lafourchette_mobile.js
-	if you are not blocked (403), open the deals_mobile.json file (in the same folder)
+		cd code/lafourchette_Scrap/
+		node lafourchette_mobile.js
+		if you are not blocked (403), open the deals_mobile.json file (in the same folder)
 
 
 
