@@ -27,7 +27,7 @@ for (i = 1; i<35; i++){
 						    	
 						    	var stars = sel('.michelin-poi-distinctions-list .content-wrapper').text().charAt(0);
 
-								var str = '{' + '"nom" : ' + '"' + stringify(title.substr(7, title.length - 5)) + '",' + ' "zip" : "' + addr_Zip + '", ' + '"Stars" : ' + '"' + stars + '"},\n';
+								var str = '{' + '"nom" : ' + '"' + title.substr(7, title.length - 5) + '",' + ' "zip" : "' + addr_Zip + '", ' + '"Stars" : ' + '"' + stars + '"},\n';
 
                         fs.appendFile('michelin_restaurants.json', str)
 							    
