@@ -1,9 +1,10 @@
-// All the code is in the ‘/code/’ folder
+// All the code is in the ‘code/’ folder
+
 
 /*** Run the React client side to display the deals (from file because of the anti bot): ***/
-
+	
+	cd code/react/
 	npm install
-	cd code/
 	npm start
 	go to localhost:3000
 
@@ -19,7 +20,7 @@
 
 * Installation (if modules not already installed):
 
-	npm install cheerio request
+	npm install (from the first folder, which contains all the project)
 
 ————————————————————————————————————————————
 
