@@ -1,15 +1,12 @@
 var fs = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
-//remark: 2 italian restaurants were added to the href because of the zip code. removed them by hand
 
 var str = '[';
 
-//for api : https://m.lafourchette.com/api/restaurant/323811/sale-type
+
 
 function get_write_deal(href){
-
-
 const config = {
 	'uri': href,
 	'headers':{
@@ -40,7 +37,7 @@ const config = {
 					
 			    	str = '\n{"nom" : "'+name+'", "promo" : "'+promo+'", "href" : "'+href+'", "addr" : "'+addr+'"},';
 					//console.log(href);
-					fs.appendFile('../jsonFiles/deals_mobile.json', str);
+					fs.appendFile('./deals_mobile.json', str);
 			    
 			    }
 			}

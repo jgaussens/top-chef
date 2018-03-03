@@ -1880,15 +1880,6 @@
 		}
 	},
 	{
-		"id": 3485,
-		"name": "Manoir de la Boulaie - Laurent Saudeau",
-		"address": {
-			"address_locality": "Haute-Goulaine",
-			"postal_code": "44115",
-			"street_address": "33, rue de la Chapelle Saint Martin"
-		}
-	},
-	{
 		"id": 8977,
 		"name": "Shang Palace - Shangri-La Hotel, Paris",
 		"address": {

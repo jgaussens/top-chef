@@ -5,9 +5,8 @@ var cheerio = require('cheerio');
 var str = '[';
 
 
-
+//get the deals from a given page of a lafourchette restaurant
 function get_write_deal(href){
-
 
 const config = {
 	'uri': href,
@@ -39,7 +38,7 @@ const config = {
 					
 			    	str = '\n{"nom" : "'+name+'", "promo" : "'+promo.replace('"', '')+'", "href" : "'+href+'", "addr" : "'+addr+'"},';
 					//console.log(href);
-					fs.appendFile('all_current_promos.json', str);
+					fs.appendFile('promos_scrap.json', str);
 			    
 			    }
 			}
@@ -53,16 +52,14 @@ const config = {
 }
 
 
-//read the href in our text file to 
-
+//read the href in our text file to get all the deals in web mode
 var lineReader = require('readline').createInterface({
   input: require('fs').createReadStream('all_href_Lafourchette.txt')
 });
 
+
 lineReader.on('line', function (line) {
-	
 	var page = 'https://www.lafourchette.com'.concat(line);
-	
 	get_write_deal(page);
   
 });

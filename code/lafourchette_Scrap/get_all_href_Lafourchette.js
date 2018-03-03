@@ -3,6 +3,7 @@ var request = require('request');
 var cheerio = require('cheerio');
 
 
+
 function getHref(search_page, zipCode){
 	
 	request(search_page, function (error, response, html) {
@@ -12,15 +13,12 @@ function getHref(search_page, zipCode){
 				var $ = cheerio.load(html);
 				
 				var allResults = $('.resultContainer .list-unstyled .resultItem');//good
-	
-				//verify zipCode:
-				
+					
 				for (j = 0; j < allResults.length; j++){
 				
 					currAddr = allResults.eq(j).find('.resultItem-address').text();
 	
-					//console.log(currAddr);
-					//console.log(zipCode);
+
 				
 					var toSearch = currAddr.search(zipCode); // if returns -1 => no string
 	
@@ -33,13 +31,9 @@ function getHref(search_page, zipCode){
 							var href = $('.resultItem-name a').attr('href');
 							fs.appendFile('href_Lafourchette.txt', href + '\n');
 						
-						}
-						
+						}						
 				}
-
-			
 			}
-			
 	});
 }
 

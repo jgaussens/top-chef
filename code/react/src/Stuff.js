@@ -2,24 +2,19 @@ import React, { Component } from "react";
 
 //const json = require('json!./promos.json');
 
-class Stuff extends Component {
+class About extends Component {
   render() {
     return (
       <div>
-        <h2>STUFF</h2>
-        <p>Mauris sem velit, vehicula eget sodales vitae,
-        rhoncus eget sapien:</p>
-        <ol>
-          <li>Nulla pulvinar diam</li>
-          <li>Facilisis bibendum</li>
-          <li>Vestibulum vulputate</li>
-          <li>Eget erat</li>
-          <li>Id porttitor</li>
-        </ol>
+        <h2>ABOUT</h2>
+        <p>
+        The aim of this project was to parse all the michelin-starred restaurants on their website, and then parse the lafourchette website in order to get all the current deals on the michelin-starred restaurants.
+        </p>
+        
       </div>
 
     );
   }
 }
  
-export default Stuff;
+export default About;

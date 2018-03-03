@@ -1,15 +1,15 @@
 import React, { Component } from "react";
- 
-import data from './promos.json';
-import promos from './jsonFiles/all_deals_API.json';
-import href from './jsonFiles/href_lafourchette.json';
-import info from './jsonFiles/info_restaurants.json';
-import michelin from './jsonFiles/restaurants.json';
+
+
+//all the different jsons that contains informations about restaurants / deals / stars / href 
+import promos from './jsonFiles_static/deals_api.json';
+import href from './jsonFiles_static/href_lafourchette.json';
+import info from './jsonFiles_static/restaurant_addresses.json';
+import michelin from './jsonFiles_static/michelin_stars.json';
 
 var dom = "";
  
 //create a dom object that combines all the json to combine deals, stars and the href of the restaurants to be able to click on it
-
 function merge_all_restaurant_infos(){
 	for(var i = 0; i < promos.length; i++) {
 	    
@@ -33,7 +33,7 @@ function merge_all_restaurant_infos(){
 		    }
 	    }
 	    
-	    
+	    //put all informations in the "dom" string
 	    dom += '<ul><a href="'
 	    for (var l = 0; l < href.length; l++){
 		    if (href[l].id_restaurant == promos[i].id_restaurant){
@@ -42,8 +42,8 @@ function merge_all_restaurant_infos(){
 		    }
 	    }
 	    
+	    //add the deals titles
 	    for (var m = 0; m < promos[i].deals.length; m++){
-	
 		    dom += "\n<li>"+promos[i].deals[m].title+"</li>\n";
 	    }
 	    dom += "</ul>\n";
@@ -52,7 +52,7 @@ function merge_all_restaurant_infos(){
 
 merge_all_restaurant_infos();
 
-
+//print the deals
 class Home extends Component {
   render() {
     return ( <div dangerouslySetInnerHTML={{ __html: dom }} />
