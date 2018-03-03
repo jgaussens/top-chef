@@ -20,7 +20,7 @@
 
 * Installation (if modules not already installed):
 
-	npm install (from the first folder, which contains all the project)
+		npm install (from the first folder, which contains all the project)
 
 	
 
@@ -29,10 +29,10 @@
 
 * Get all the stared restaurants from michelin:
 
-	
-	cd code/michelin/
-	node michelin.js
-	open michelin_restaurants.json (in the same folder) to see the results 
+
+		cd code/michelin/
+		node michelin.js
+		open michelin_restaurants.json (in the same folder) to see the results 
 
 
 ————————————————————————————————————————————
@@ -42,7 +42,7 @@
 
 		cd code/lafourchette_API/
 		node lafourchette.js
-		open the deals_api.json file and the info_restaurants.json file (infos about restaurants) in the same folder
+		open the deals_api.json file and the info_restaurants.json file (infos about restaurants) (in the same folder)
 
 
 ————————————————————————————————————————————
